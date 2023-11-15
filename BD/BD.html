@@ -13,44 +13,36 @@
 
 <body>
 
-    <div class="container">
+    <header>
 
         <h1>
             Liste des BD
         </h1>
+
         <button id="rechercher">
-            Rechercher 
+            Rechercher
         </button>
+
         <input type="search" name="" id="barreDeRecherche">
+
         <label for="barreDeRecherche"></label>
+
+    </header>
+
+    <div class="container">
 
         <div class="infoEtSmallImg">
 
-            <div class="info">
+            <div class="info" id="resultatRecherche">
 
-                <p id="idAlbulm">
-                    ID de l'album : 666
-                </p>
-
-                <p id="idSerie">
-                    Série : MABITE
-                </p>
-
-                <p id="idNumero">
-                    Album N° : 666
-                </p>
-
-                <p id="idTitre">
-                    Titre : MABITE
-                </p>
-
-                <p id="idAuteur">
-                    Auteur : MABITE
-                </p>
-
-                <p id="idPrix">
-                    Prix : 9999$
-                </p>
+                <!-- Zone 
+                    pour
+                     afficher
+                      les
+                       résultats
+                        de
+                         recherche
+                         -->
 
             </div>
 
@@ -60,16 +52,14 @@
 
             </div>
 
-
         </div>
+
         <div class="bigImg">
-
             <img src="images/noComics.jpeg" id="album">
-
         </div>
-
 
     </div>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -83,8 +73,9 @@
     <script src="data/albums.js"></script>
     <script src="data/series.js"></script>
     <script src="data/auteurs.js"></script>
-    <script src="js/modeleBD.js"></script>
     <script src="js/script.js"></script>
+
+
 </body>
 
 </html>

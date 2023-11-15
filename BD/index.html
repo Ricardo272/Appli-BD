@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Recherche d'albums</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>Liste des albums</h1>
+        <button id="rechercher">Rechercher</button>
+        <input type="search" id="barreDeRecherche" placeholder="Rechercher par titre, auteur ou série">
+    </header>
+
+    <div id="resultatRecherche" class="container">
+        <!-- Résultats de la recherche seront affichés ici -->
+    </div>
+
+    <!-- Ajouter jQuery (si non déjà inclus) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+    <!-- Script JavaScript -->
+    <script>
+        // Les données des albums, séries et auteurs (simulées pour l'exemple)
+        const albums = [
+            { nom: "Album1" },
+            { nom: "Album2" },
+            { nom: "Album3" }
+        ];
+
+        const series = [
+            { nom: "Série1" },
+            { nom: "Série2" },
+            { nom: "Série3" }
+        ];
+
+        const auteurs = [
+            { nom: "Auteur1" },
+            { nom: "Auteur2" },
+            { nom: "Auteur3" }
+        ];
+
+        // Fonction pour rechercher des éléments correspondants dans une liste
+        function rechercherElement(terme, elements) {
+            const termeMinuscule = terme.toLowerCase();
+            const elementsArray = Array.isArray(elements) ? elements : Array.from(elements);
+
+            const correspondances = elementsArray.filter(element => {
+                if (element && element.nom) {
+                    return element.nom.toLowerCase().includes(termeMinuscule);
+                }
+                return false;
+            });
+
+            console.log('Correspondances:', correspondances);
+            return correspondances;
+        }
+
+        // Fonction pour rechercher des correspondances dans les albums, séries et auteurs
+        function rechercherAlbum(termeRecherche) {
+            const resultat = document.getElementById('resultatRecherche');
+            resultat.innerHTML = '';
+
+            const correspondancesAlbums = rechercherElement(termeRecherche, albums);
+            const correspondancesSeries = rechercherElement(termeRecherche, series);
+            const correspondancesAuteurs = rechercherElement(termeRecherche, auteurs);
+
+            const correspondances = [...correspondancesAlbums, ...correspondancesSeries, ...correspondancesAuteurs];
+
+            correspondances.forEach(correspondance => {
+                resultat.innerHTML += `
+                    <div>
+                        <p>${correspondance.nom}</p>
+                        <hr>
+                    </div>
+                `;
+            });
+
+            if (resultat.innerHTML === '') {
+                resultat.innerHTML = '<p>Aucune correspondance trouvée.</p>';
+            }
+        }
+
+        // Attendre que le document soit prêt
+        $(document).ready(function () {
+            // Lorsque le bouton de recherche est cliqué
+            $('#rechercher').on('click', function () {
+                const termeRecherche = $('#barreDeRecherche').val();
+                rechercherAlbum(termeRecherche);
+            });
+        });
+    </script>
+</body>
+
+</html>

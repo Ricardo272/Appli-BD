@@ -5,14 +5,14 @@ jQuery(document).ready(function ($) {
 	const srcAlbumMini = "albumsMini/"; // emplacement des images des albums en petit
 	const srcAlbum = "albums/"; // emplacement des images des albums en grand
 
-	/*
+	
 	// Lecture d'un album
 	console.log("Lecture d'un album");
 	var album = albums.get("5");
 	var serie = series.get(album.idSerie);
 	var auteur = auteurs.get(album.idAuteur);
 	console.log(album.titre+" "+serie.nom+" "+auteur.nom);
-	*/
+	
 
 	/*
 	console.log("Liste des albums");
